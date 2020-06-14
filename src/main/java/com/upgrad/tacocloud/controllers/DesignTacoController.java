@@ -47,17 +47,17 @@ public class DesignTacoController {
 		Arrays.stream(types).forEach(type -> ingredientMap.put(type.toString().toLowerCase(), new ArrayList<Ingredient>()));
 		ingredients.forEach(ingredient -> ingredientMap.get(ingredient.getType().toString().toLowerCase()).add(ingredient));
 		model.addAllAttributes(ingredientMap);
-		model.addAttribute("design", new Taco());
+		model.addAttribute("taco", new Taco());
 		
 		return "design";
 	}
 	
 	@PostMapping
-	public String processForm (@Valid Taco design, Errors errors) {
+	public String processForm (@Valid Taco taco, Errors errors) {
 		if (errors.hasErrors()) {
 			return "design";
 		}
-		log.info("processing design : " + design);
+		log.info("processing design : " + taco);
 		return "redirect:/orders/current";
 	}
 }
