@@ -6,8 +6,11 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -50,7 +53,10 @@ public class DesignTacoController {
 	}
 	
 	@PostMapping
-	public String processForm (Taco design) {
+	public String processForm (@Valid Taco design, Errors errors) {
+		if (errors.hasErrors()) {
+			return "design";
+		}
 		log.info("processing design : " + design);
 		return "redirect:/orders/current";
 	}
