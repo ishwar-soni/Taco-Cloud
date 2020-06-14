@@ -51,7 +51,7 @@ public class DesignTacoController {
 	
 	@PostMapping
 	public String processForm (Taco design) {
-		log.info("processing design");
+		log.info("processing design : " + design);
 		return "redirect:/orders/current";
 	}
 }
