@@ -40,8 +40,8 @@ public class DesignTacoController {
 		
 		Type[] types = Ingredient.Type.values();
 		Map<String, List<Ingredient>> ingredientMap = new LinkedHashMap<>();
-		Arrays.stream(types).forEach(type -> ingredientMap.put(type.toString(), new ArrayList<Ingredient>()));
-		ingredients.forEach(ingredient -> ingredientMap.get(ingredient.toString()).add(ingredient));
+		Arrays.stream(types).forEach(type -> ingredientMap.put(type.toString().toLowerCase(), new ArrayList<Ingredient>()));
+		ingredients.forEach(ingredient -> ingredientMap.get(ingredient.getType().toString().toLowerCase()).add(ingredient));
 		model.addAllAttributes(ingredientMap);
 		model.addAttribute("design", new Taco());
 		

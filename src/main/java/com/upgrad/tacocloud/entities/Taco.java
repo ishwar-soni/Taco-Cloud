@@ -1,5 +1,11 @@
 package com.upgrad.tacocloud.entities;
 
-public class Taco {
+import java.util.List;
 
+import lombok.Data;
+
+@Data
+public class Taco {
+	private String name;
+	private List<Ingredient> ingredients;
 }
